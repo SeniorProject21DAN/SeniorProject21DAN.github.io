@@ -105,7 +105,7 @@ playerManager.setMessageInterceptor(
             resolve(request);
           }
       });
-    });
+    });*/
   });
 
 // Optimizing for smart displays
@@ -127,7 +127,7 @@ function getBrowseItems() {
       item.image = new cast.framework.messages.Image(data[key].poster);
       item.imageType = cast.framework.ui.BrowseImageType.MOVIE;
       browseItems.push(item);
-    } */
+    }
   });
   return browseItems;
 }
