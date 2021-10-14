@@ -58,8 +58,10 @@ playerManager.setMessageInterceptor(
   cast.framework.messages.MessageType.LOAD,
   request => {
     castDebugLogger.info(LOG_TAG, 'Intercepting LOAD request');
-
-    // Map contentId to entity
+	if (request.text && request.text.display){
+		document.getElementById("Text").innerHTML = request.text.display;
+	}
+    /* // Map contentId to entity
     if (request.media && request.media.entity) {
       request.media.contentId = request.media.entity;
     }
@@ -125,7 +127,7 @@ function getBrowseItems() {
       item.image = new cast.framework.messages.Image(data[key].poster);
       item.imageType = cast.framework.ui.BrowseImageType.MOVIE;
       browseItems.push(item);
-    }
+    } */
   });
   return browseItems;
 }
