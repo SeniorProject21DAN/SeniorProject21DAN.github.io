@@ -1,6 +1,6 @@
 
 const context = cast.framework.CastReceiverContext.getInstance();
-
+const playerManager = context.getPlayerManager();
 
 //https://developers.google.com/cast/docs/android_sender/advanced#add_a_custom_channel
 //https://stackoverflow.com/questions/46673152/google-cast-custom-receiver-timing-out
@@ -14,7 +14,7 @@ const LOG_TAG = 'MyAPP.LOG';
 castDebugLogger.setEnabled(true);
 
 // Show debug overlay
-castDebugLogger.showDebugLogs(true);
+//castDebugLogger.showDebugLogs(true);
 
 // Set verbosity level for Core events.
 castDebugLogger.loggerLevelByEvents = {
