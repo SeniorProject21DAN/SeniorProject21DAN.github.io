@@ -33,11 +33,14 @@ playerManager.setMessageInterceptor(
       `loadRequestData: ${JSON.stringify(loadRequestData)}`);
 	      // If the loadRequestData is incomplete return an error message
     if (loadRequestData || loadRequestData.media || loadRequestData.media.customData || loadRequestData.media.customData.test) {
-      document.getElementById("Text").innerHTML = loadRequestData.media.customData.test;
+      setTest(loadRequestData.media.customData.test);
     }
   }
 )
 
+function setTest(textData) {
+	document.getElementById("Text").innerHTML = textData;
+}
 context.start(options);
 
 //Blow it all away and start over
