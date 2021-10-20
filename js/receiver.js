@@ -39,7 +39,7 @@ playerManager.setMessageInterceptor(
 )
 
 function setTest(textData) {
-	document.getElementById("Text").innerHTML = textData;
+	document.getElementById("test").innerHTML = textData;
 }
 context.start(options);
 
