@@ -34,6 +34,10 @@ castDebugLogger.loggerLevelByTags = {
     LOG_TAG: cast.framework.LoggerLevel.DEBUG,
 };
 
+//DON'T REMOVE?, stops working when this is gone
+//I saw something about a custom message/channel that might be better,
+//	but this works with the debug tool so I'll leave it for now but might change
+//	https://stackoverflow.com/questions/23370019/sending-messages-from-sender-to-custom-receiver-with-chromecast-receiver-api-v2
 function makeRequest (method, url) {
   return new Promise(function (resolve, reject) {
     let xhr = new XMLHttpRequest();
@@ -116,46 +120,47 @@ const touchControls = cast.framework.ui.Controls.getInstance();
 const playerData = new cast.framework.ui.PlayerData();
 const playerDataBinder = new cast.framework.ui.PlayerDataBinder(playerData);
 
-let browseItems = getBrowseItems();
-
-function getBrowseItems() {
-  let browseItems = [];
-  makeRequest('GET', SAMPLE_URL)
-  .then(function (data) {
-    for (let key in data) {
-      let item = new cast.framework.ui.BrowseItem();
-      item.entity = key;
-      item.title = data[key].title;
-      item.subtitle = data[key].description;
-      item.image = new cast.framework.messages.Image(data[key].poster);
-      item.imageType = cast.framework.ui.BrowseImageType.MOVIE;
-      browseItems.push(item);
-    }
-  });
-  return browseItems;
-}
-
-let browseContent = new cast.framework.ui.BrowseContent();
-browseContent.title = 'Up Next';
-browseContent.items = browseItems;
-browseContent.targetAspectRatio =
-  cast.framework.ui.BrowseImageAspectRatio.LANDSCAPE_16_TO_9;
-
-playerDataBinder.addEventListener(
-  cast.framework.ui.PlayerDataEventType.MEDIA_CHANGED,
-  (e) => {
-    if (!e.value) return;
-
-    // Media browse
-    touchControls.setBrowseContent(browseContent);
-
-    // Clear default buttons and re-assign
-    touchControls.clearDefaultSlotAssignments();
-    touchControls.assignButton(
-      cast.framework.ui.ControlsSlot.SLOT_PRIMARY_1,
-      cast.framework.ui.ControlsButton.SEEK_BACKWARD_30
-    );
-  });
+//Well we don't need that I guess
+//let browseItems = getBrowseItems();
+//
+//function getBrowseItems() {
+//  let browseItems = [];
+//  makeRequest('GET', SAMPLE_URL)
+//  .then(function (data) {
+//    for (let key in data) {
+//      let item = new cast.framework.ui.BrowseItem();
+//      item.entity = key;
+//      item.title = data[key].title;
+//      item.subtitle = data[key].description;
+//      item.image = new cast.framework.messages.Image(data[key].poster);
+//      item.imageType = cast.framework.ui.BrowseImageType.MOVIE;
+//      browseItems.push(item);
+//    }
+//  });
+//  return browseItems;
+//}
+//
+//let browseContent = new cast.framework.ui.BrowseContent();
+//browseContent.title = 'Up Next';
+//browseContent.items = browseItems;
+//browseContent.targetAspectRatio =
+//  cast.framework.ui.BrowseImageAspectRatio.LANDSCAPE_16_TO_9;
+//
+//playerDataBinder.addEventListener(
+//  cast.framework.ui.PlayerDataEventType.MEDIA_CHANGED,
+//  (e) => {
+//    if (!e.value) return;
+//
+//    // Media browse
+//    touchControls.setBrowseContent(browseContent);
+//
+//    // Clear default buttons and re-assign
+//    touchControls.clearDefaultSlotAssignments();
+//    touchControls.assignButton(
+//      cast.framework.ui.ControlsSlot.SLOT_PRIMARY_1,
+//      cast.framework.ui.ControlsButton.SEEK_BACKWARD_30
+//    );
+//  });
 
 context.start(options);
 
