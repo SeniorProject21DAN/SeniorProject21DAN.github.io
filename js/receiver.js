@@ -32,6 +32,7 @@ playerManager.setMessageInterceptor(
     castDebugLogger.debug(LOG_RECEIVER_TAG,
       `loadRequestData: ${JSON.stringify(loadRequestData)}`);
 	      // If the loadRequestData is incomplete return an error message
+	console.log(loadRequestData.media.entity);
 	setTest(loadRequestData.media.entity);
     if (loadRequestData || loadRequestData.media || loadRequestData.media.customData || loadRequestData.media.customData.test) {
       setTest(loadRequestData.media.entity);
