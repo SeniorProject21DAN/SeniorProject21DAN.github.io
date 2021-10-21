@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Cast CAF Receiver</title>
+    <script src="//www.gstatic.com/cast/sdk/libs/caf_receiver/v3/cast_receiver_framework.js"></script>
+    <!-- Cast Debug Logger -->
+    <script src="//www.gstatic.com/cast/sdk/libs/devtools/debug_layer/caf_receiver_logger.js"></script>
+  </head>
+
+  <body>
+	  <div style="displaay: none;"><cast-media-player style="width:0;height:0"></cast-media-player></div>
+	<p id="test" align="right" width=100% style="background:gray; color:red">Calvin</p>
+	<!--<img src="https://cdn2.thecatapi.com/images/EWaMIhQSq.jpg" alt="test" width=50vw height=50vh>-->
+    <!--<cast-media-player></cast-media-player>-->
+	<script>
+		
+		document.getElementById("test").innerHTML = "Updated";
+	</script>
+    <iframe src="https://open.spotify.com/embed/album/1DFixLWuPkv3KT3TnV35m3" width="300" height="380" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+	<footer>
+      <script defer src="js/receiver.js"></script>
+  </footer>
+  </body>
+</html>
